@@ -1,7 +1,7 @@
 export
 
-DISCO_VERSION = 0.4.3
-DISCO_RELEASE = 0.4.3
+DISCO_VERSION = 0.4.5
+DISCO_RELEASE = 0.4.5
 
 # standard make installation variables
 sysconfdir    = /etc
@@ -111,7 +111,7 @@ install: install-core install-node install-master
 
 uninstall: uninstall-master uninstall-node
 
-install-core:
+install-core: $(TARGETBIN)/disco $(TARGETBIN)/ddfs
 	(cd lib && $(PY_INSTALL))
 
 install-discodb: contrib
@@ -121,7 +121,6 @@ install-examples: $(TARGETLIB)/examples
 
 install-master: master \
 	$(TARGETDAT)/$(WWW) \
-	$(TARGETBIN)/disco $(TARGETBIN)/ddfs \
 	$(TARGETCFG)/settings.py
 
 uninstall-master:
@@ -150,7 +149,7 @@ typer: $(EPLT)
 
 $(EPLT):
 	$(DIALYZER) --build_plt --output_plt $(EPLT) \
-		    --apps stdlib kernel erts compiler crypto inets ssl syntax_tools xmerl
+		    --apps stdlib kernel erts compiler crypto inets syntax_tools
 
 $(TARGETDAT)/% $(TARGETLIB)/%: %
 	$(INSTALL) -d $(@D)
