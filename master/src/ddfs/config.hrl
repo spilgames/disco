@@ -137,7 +137,7 @@
 % This value _must_ be larger than the other time-related DDFS
 % parameters listed in this file.  In particular, it must be larger
 % than ORPHANED_TAG_EXPIRES.
--define(DELETED_TAG_EXPIRES, (5 * ?HOUR)).
+-define(DELETED_TAG_EXPIRES, (6 * ?HOUR)).
 
 % How many times a tag operation should be retried before aborting.
 -define(MAX_TAG_OP_RETRIES, 3).
