@@ -1,8 +1,96 @@
 Release notes
 =============
 
+Disco 0.4.5 (Mar 28, 2013)
+--------------------------
+
+Changes
+'''''''
+
+- Disco documentation is now also at `ReadTheDocs
+  <http://disco.readthedocs.org>`_, along with documentation for
+  `DiscoDB <http://discodb.readthedocs.org>`_.
+
+- Mochiweb has been updated to fix compilation issues with Erlang 16B,
+  which removed support for parameterized modules.
+
+- Disco debian packages are no longer hosted on discoproject.org.
+  Instead, Debian/Ubuntu users are encouraged to build their own
+  packages for their particular Erlang/Python environment using the
+  ``make-discoproject-debian`` script in the source tree.  Please read
+  the comments in the script.
+
+Bugfixes
+''''''''
+
+- Fix ``ddfs xcat`` display output, thanks to John Emhoff.
+
+- Fix ``disco jobdict`` command (#341).
+
+- Clarify the documentation in several places, thanks to feedback from
+  Pavel Hančar, and fixes from John Emhoff.
+
+- Fix a formatting bug in ``disco.util:urljoin``.
+
+- Fixed job deletion from UI when job has quotes in name, thanks to
+  @nvdev on Github.
+
+- Ensure that *known* garbage in DDFS is deleted immediately, without
+  waiting for the safety timeout required for blobs and tags of
+  indeterminate status.
+
+Disco 0.4.4 (Dec 5, 2012)
+-------------------------
+
+New features
+''''''''''''
+
+- The Python client library should now be Python3 compatible (version
+  3.2 or higher).  As usual, the Python versions on the client and in
+  the Disco cluster should match; mixed configurations are not
+  supported.  Since Python3 differentiates between string and unicode
+  objects, Disco jobs will need to do the same.  In particular, the
+  default *map_reader* will provide ``bytes`` objects to the ``map``
+  function.
+
+- Client and master version commands have been added to the
+  :mod:`disco <discocli>` command-line interface (issue #283).
+  Currently, the client version command only works for Disco installed
+  as a python egg.
+
+- Installation support for NetBSD, thanks to Yamamoto Takashi.
+
+- There is now a script to ease the creation of Disco debian packages,
+  used to create the Debian packages provided from `discoproject.org
+  <http://discoproject.org/doc/disco/start/download.html>`_.  Note
+  that this script does *not* follow Debian packaging guidelines; use
+  at your own risk!
+
+- Small efficiency and logging improvements to DDFS.
+
+Changes
+'''''''
+
+- The ``disco`` and ``ddfs`` command-line scripts are now packaged as
+  part of python-disco Debian package, so that they can be used on
+  clients.  Thanks to Daniel Graña.
+
+Bugfixes
+''''''''
+
+- :func:`disco.ddfs.DDFS.pull` should now obey DISCO_PROXY settings.
+  Thanks to Daniel Graña.
+
+- Intercept Python warning messages to sys.stderr, which break the
+  Disco worker protocol.  They are now logged as messages.  Thanks to
+  Daniel Graña.
+
+- The HTTP header handling in the Disco client library is more
+  case-resilient.
+
+
 Disco 0.4.3 (Aug 22, 2012)
------------------
+--------------------------
 
 New features
 ''''''''''''
