@@ -83,7 +83,7 @@
 % The longest potential interval between messages in the GC protocol;
 % used to ensure GC makes forward progress.  This can be set to the
 % estimated time to traverse all the volumes on a DDFS node.
--define(GC_PROGRESS_INTERVAL, (120 * ?MINUTE)).
+-define(GC_PROGRESS_INTERVAL, (1 * ?DAY)).
 
 % Number of extra replicas (i.e. lost replicas recovered during GC) to
 % allow before deleting extra replicas.
